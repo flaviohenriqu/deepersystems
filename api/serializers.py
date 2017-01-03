@@ -26,7 +26,7 @@ class DropdownSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         dropdown_values = validated_data.pop('dropdown_values')
-        dropdown = Dropdown.objects.create(**validated_data)
+        dropdown,_ = Dropdown.objects.get_or_create(**validated_data)
         for value in dropdown_values:
             DropdownList.objects.create(dropdown=dropdown, **value)
         return dropdown
