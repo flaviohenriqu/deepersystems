@@ -3,6 +3,10 @@ from api.models import Candidate, Dropdown, DropdownList
 
 
 class CandidateSerializer(serializers.ModelSerializer):
+    hours_per_week = serializers.IntegerField(required=False)
+    where_found_us = serializers.CharField(required=False)
+    comments = serializers.CharField(required=False)
+
     class Meta:
         model = Candidate
         fields = ('id', 'name', 'job_position', 'email', 'hours_per_week',
@@ -13,6 +17,10 @@ class DropdownListSerializer(serializers.ModelSerializer):
     class Meta:
         model = DropdownList
         fields = ('id', 'text')
+        lookup_field = 'field_name'
+        extra_kwargs = {
+            'url': {'lookup_field': 'field_name'}
+        }
 
 
 class DropdownSerializer(serializers.ModelSerializer):

@@ -8,6 +8,8 @@ urlpatterns = [
             views.CandidateDetail.as_view()),
         url(r'^api/(?P<version>(v1))/dropdowns/$',
             views.DropdownLists.as_view()),
+        url(r'^api/(?P<version>(v1))/dropdowns/(?P<field_name>[-\w]+)/$',
+            views.DropdownDetail.as_view(lookup_field='field_name')),
         url(r'^api/(?P<version>(v1))/dropdown-values/$',
             views.DropdownValues.as_view()),
         ]

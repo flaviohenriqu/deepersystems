@@ -22,6 +22,7 @@ class DropdownLists(generics.ListCreateAPIView):
 class DropdownDetail(generics.RetrieveUpdateAPIView):
     queryset = Dropdown.objects.all()
     serializer_class = DropdownSerializer
+    lookup_field = 'field_name'
 
 
 class DropdownValues(generics.ListCreateAPIView):
