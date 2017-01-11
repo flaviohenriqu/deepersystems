@@ -3,7 +3,7 @@ from api.models import Candidate, Dropdown, DropdownList
 
 
 class CandidateSerializer(serializers.ModelSerializer):
-    hours_per_week = serializers.IntegerField(required=False)
+    hours_per_week = serializers.IntegerField(required=False, default=0)
     where_found_us = serializers.CharField(required=False)
     comments = serializers.CharField(required=False)
 
